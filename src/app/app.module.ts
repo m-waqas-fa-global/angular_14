@@ -5,12 +5,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SharedModule } from "./shared/shared.module";
 import { PrimengCompsComponent } from './primeng-comps/primeng-comps.component'
+import { DemoComponent } from './demo.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    PrimengCompsComponent
+    PrimengCompsComponent,
+    DemoComponent
   ],
   imports: [
     BrowserModule,
