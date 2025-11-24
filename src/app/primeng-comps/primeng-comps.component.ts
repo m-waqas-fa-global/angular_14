@@ -72,6 +72,8 @@ export class PrimengCompsComponent implements OnInit, DoCheck {
     console.log("ngOnInit called");
     // this.printArray(this.uRightObj, true);
     this.printArray(this.data, false);
+    
+    let data  =  new Worker(new URL('./works/pdf-export.worker.ts', import.meta.url));
   }
  
   printArray(ary: any, isArray: boolean) {
