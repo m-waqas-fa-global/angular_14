@@ -8,6 +8,7 @@ import { SharedModule } from "./shared/shared.module";
 import { PrimengCompsComponent } from './primeng-comps/primeng-comps.component'
 import { DemoComponent } from './demo.component';
 import { LoginComponent } from './auth/login/login.component';
+import { AboutComponent } from './about/about.component';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { LoginComponent } from './auth/login/login.component';
     AppComponent,
     PrimengCompsComponent,
     DemoComponent,
-    LoginComponent
+    LoginComponent,
+    AboutComponent
   ],
   imports: [
     BrowserModule,

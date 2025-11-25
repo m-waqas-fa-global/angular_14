@@ -1,13 +1,27 @@
-import { Component, DoCheck, OnInit } from '@angular/core';
+import { AfterViewInit, Component, DoCheck, OnInit } from '@angular/core';
+import { Router, Route } from '@angular/router';
 
 @Component({
   selector: 'app-primeng-comps',
   templateUrl: './primeng-comps.component.html',
   styleUrls: ['./primeng-comps.component.scss']
 })
-export class PrimengCompsComponent implements OnInit, DoCheck {
+export class PrimengCompsComponent implements OnInit, DoCheck ,AfterViewInit{
 
-  constructor() { }
+    broadChannel = new BroadcastChannel("chat_channel");
+    eventSource = new EventSource("https://dummyjson.com/carts/34");
+    constructor(private route:Router ){
+        // route.navigateByUrl('/detail')
+    }
+  
+     routeTo(){
+        this.route.navigate(['/detail'])
+     }
+
+     routeBack(){
+        this.route.navigate(['/login'])
+     }
+  
   value: string = "";
 
  
@@ -69,21 +83,21 @@ export class PrimengCompsComponent implements OnInit, DoCheck {
   }
 
   ngOnInit(): void {
-    console.log("ngOnInit called");
-    // this.printArray(this.uRightObj, true);
-    this.printArray(this.data, false);
-    
-    let data  =  new Worker(new URL('./works/pdf-export.worker.ts', import.meta.url));
+    this.printArray(this.data, false);    
   }
+
+   ngAfterViewInit(): void {
+     console.log("ngAfterView called");
+   }
  
   printArray(ary: any, isArray: boolean) {
     if (isArray == true) {
       for (let obj of ary) {
-        console.warn(obj?.screenName,"-", obj?.screenLink)
+        // console.warn(obj?.screenName,"-", obj?.screenLink)
       }
     } else {
       for (let obj in ary) {
-        console.log(obj, " - ", ary[obj]);
+        // console.log(obj, " - ", ary[obj]);
       }
     }
   }
@@ -94,6 +108,10 @@ export class PrimengCompsComponent implements OnInit, DoCheck {
       console.log("Value length is greater than 0");
       return;
     }
+  }
+
+  sendMsg(){
+    this.broadChannel.postMessage(this.value || "No Message");
   }
 
 }

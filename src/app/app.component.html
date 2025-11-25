@@ -1,5 +1,5 @@
 
-   <!-- <p class="green">this is title {{title}}</p>
+   <!--
 
    <h2>Stash Your Changes Before Branch Switch</h2>
 
@@ -23,4 +23,6 @@
    <!-- <Demo></Demo> -->
 
    <!-- Login Component -->
-   <app-login></app-login>
+   <!-- <app-login></app-login> -->
+
+   <router-outlet (activate)="onActivate($event)" (deactivate)="onDeactivate($event)"></router-outlet>

@@ -1,7 +1,31 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { PrimengCompsComponent } from './primeng-comps/primeng-comps.component';
+import { LoginComponent } from './auth/login/login.component';
+import { AboutComponent } from './about/about.component';
 
-const routes: Routes = [];
+const routes: Routes = [
+      {     
+            path: '',
+            redirectTo:"login",
+            pathMatch:"full"
+      },
+      {
+       path:"login",
+       component:LoginComponent,
+      //  outlet:"primaryOutlet"
+     },
+     {
+       path:"home",
+       component:PrimengCompsComponent,
+      //  outlet:"primaryOutlet"
+     },
+      {
+       path:"about",
+       component:AboutComponent,
+      //  outlet:"primaryOutlet"
+     }
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
