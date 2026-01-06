@@ -9,7 +9,7 @@ import { PrimengCompsComponent } from './primeng-comps/primeng-comps.component'
 import { DemoComponent } from './demo.component';
 import { LoginComponent } from './auth/login/login.component';
 import { AboutComponent } from './about/about.component';
-
+import { provideAnimations } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -17,16 +17,16 @@ import { AboutComponent } from './about/about.component';
     PrimengCompsComponent,
     DemoComponent,
     LoginComponent,
-    AboutComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     SharedModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [provideAnimations()],
+  bootstrap: [AppComponent],
+  
 })
 export class AppModule { }
