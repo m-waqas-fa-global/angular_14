@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { PrimengCompsComponent } from './primeng-comps/primeng-comps.component';
 import { LoginComponent } from './auth/login/login.component';
 import { AboutComponent } from './about/about.component';
+import { AngularMaterialComponent } from './angular-material/angular-material.component';
 
 const routes: Routes = [
       {     
@@ -24,6 +25,10 @@ const routes: Routes = [
        path:"about",
        component:AboutComponent,
       //  outlet:"primaryOutlet"
+     },
+     {
+      path:"angular-material",
+      component:AngularMaterialComponent,
      }
 ];
 

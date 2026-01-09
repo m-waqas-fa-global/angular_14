@@ -1,0 +1,42 @@
+<h1>angular-material works!</h1>
+<hr>
+<h1>Angular-Material Raised Buttons</h1>
+
+<section>
+  <div class="example-label">Raised</div>
+  <div class="example-button-row">
+    <button mat-raised-button>Basic</button>
+    <button mat-raised-button color="primary">Primary</button>
+    <button mat-raised-button color="accent">Accent</button>
+    <button mat-raised-button color="warn">Warn</button>
+    <button mat-raised-button color="primary"> Disabled</button>
+    <a mat-raised-button href="https://www.google.com/" target="_blank">Link</a>
+    <br>
+    <button mat-raised-button color="warn">Submit Login Form</button>
+  </div>
+</section> 
+<hr>
+<h1>Angular-Material Form Fields</h1>
+
+<form [formGroup]="loginForm" (ngSubmit)="formSubmit()" class="example-form">
+  <mat-form-field class="example-full-width" appearance="fill">
+    <mat-label>Name *</mat-label>
+    <input matInput placeholder="Enter your name" formControlName="name">
+  </mat-form-field>
+
+  <mat-form-field class="example-full-width" appearance="fill">
+    <mat-label>Email *</mat-label>
+    <input matInput placeholder="Enter your email" formControlName="email">
+  </mat-form-field>
+  <button mat-raised-button color="primary" type="submit">Submit</button>
+</form>
+<hr>
+<h1>Angular-Material Grid List</h1>
+
+<mat-grid-list cols="4" rowHeight="200px" gutterSize="15px">
+  <mat-grid-tile>1</mat-grid-tile>
+  <mat-grid-tile>2</mat-grid-tile>
+  <mat-grid-tile>3</mat-grid-tile>
+  <mat-grid-tile>4</mat-grid-tile>
+</mat-grid-list>
+

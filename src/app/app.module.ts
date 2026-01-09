@@ -9,7 +9,12 @@ import { PrimengCompsComponent } from './primeng-comps/primeng-comps.component'
 import { DemoComponent } from './demo.component';
 import { LoginComponent } from './auth/login/login.component';
 import { AboutComponent } from './about/about.component';
-import { provideAnimations } from '@angular/platform-browser/animations';
+import { provideAnimations, BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AngularMaterialComponent } from './angular-material/angular-material.component';
+import { MatButtonModule } from '@angular/material/button';
+import { MaterialModule } from './shared/materia.module';
+
+
 
 @NgModule({
   declarations: [
@@ -17,6 +22,7 @@ import { provideAnimations } from '@angular/platform-browser/animations';
     PrimengCompsComponent,
     DemoComponent,
     LoginComponent,
+    AngularMaterialComponent,
   ],
   imports: [
     BrowserModule,
@@ -24,8 +30,12 @@ import { provideAnimations } from '@angular/platform-browser/animations';
     SharedModule,
     FormsModule,
     ReactiveFormsModule,
+    BrowserAnimationsModule,
+    MaterialModule
   ],
-  providers: [provideAnimations()],
+  providers: [provideAnimations(),
+      // {provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: {appearance: 'fill'}}
+  ],
   bootstrap: [AppComponent],
   
 })
