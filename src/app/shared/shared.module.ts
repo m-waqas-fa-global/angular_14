@@ -4,8 +4,8 @@ import { ButtonModule } from 'primeng/button';
 import { InputTextModule } from 'primeng/inputtext';
 import { FormsModule } from '@angular/forms';
 import { CurrancypPipe } from './custom-comp/currancyp.pipe';
-import { BtnStylingDirective } from './Directive/btn-styling.directive';
 import { CardComponent } from './component/card/card.component';
+import { BtnStylingDirective } from './Directive/btn-styling.directive';
 
 @NgModule({
   declarations: [
@@ -20,6 +20,7 @@ import { CardComponent } from './component/card/card.component';
     FormsModule,
   ],
   exports:[
+    BtnStylingDirective,
     ButtonModule,
     InputTextModule,
     FormsModule,

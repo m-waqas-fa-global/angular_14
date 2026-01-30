@@ -8,11 +8,10 @@ import { SharedModule } from "./shared/shared.module";
 import { PrimengCompsComponent } from './primeng-comps/primeng-comps.component'
 import { DemoComponent } from './demo.component';
 import { LoginComponent } from './auth/login/login.component';
-import { AboutComponent } from './about/about.component';
 import { provideAnimations, BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AngularMaterialComponent } from './angular-material/angular-material.component';
-import { MatButtonModule } from '@angular/material/button';
 import { MaterialModule } from './shared/materia.module';
+
 
 
 
@@ -23,6 +22,7 @@ import { MaterialModule } from './shared/materia.module';
     DemoComponent,
     LoginComponent,
     AngularMaterialComponent,
+   
   ],
   imports: [
     BrowserModule,

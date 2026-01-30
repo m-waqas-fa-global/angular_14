@@ -1,10 +1,15 @@
-import { Directive } from '@angular/core';
+import { Directive, ElementRef, HostListener, OnInit, Renderer2 } from '@angular/core';
 
 @Directive({
-  selector: '[appBtnStyling]'
+  selector: '[BtnStyling]'
 })
-export class BtnStylingDirective {
+export class BtnStylingDirective implements OnInit {
+ constructor(private el: ElementRef) {
+    console.log('BtnStylingDirective initialized on', this.el.nativeElement);
+     
+  }
 
-  constructor() { }
-
+  ngOnInit(): void {
+    // this.setBaseStyles();
+  }
 }
