@@ -12,6 +12,8 @@ export class AboutComponent implements OnInit {
   broadChannel = new BroadcastChannel("chat_channel");
   constructor() { }
 
+  name = 'About Component';
+
   ngOnInit(): void {
     this.broadChannel.onmessage = (message) => {
       console.warn("About Component received message: ", message);
@@ -28,7 +30,7 @@ export class AboutComponent implements OnInit {
 
   @HostListener("window:click", ['$event'])
   unloadHandler(event: Event) {
-   console.log("About Component HostListener Clicked!", event);
-  }   
+  //  console.log("About Component HostListener Clicked!", event);
+  }
 
 }
