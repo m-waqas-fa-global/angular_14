@@ -1,0 +1,9 @@
+name: Angular Frontend CI/CD
+
+on:
+  pull_request:
+    branches:
+      - master
+  push:
+    branches:
+      - master
