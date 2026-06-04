@@ -1,0 +1,32 @@
+name: Angular Workflow Automation Script 
+
+on:
+push:
+branches:
+- workspace
+
+jobs:
+build:
+runs-on: ubuntu-latest
+
+```
+steps:
+  - name: Checkout Code
+    uses: actions/checkout@v4
+
+  - name: Show Message
+    run: echo "Code was pushed to workspace branch. Starting Angular build..."
+
+  - name: Setup Node.js
+    uses: actions/setup-node@v4
+    with:
+      node-version: 22
+
+  - name: Install Dependencies
+    run: npm ci
+
+  - name: Build Angular Application
+    run: npm run build
+
+  - name: Build Completed
+    run: echo "Angular build completed successfully."
