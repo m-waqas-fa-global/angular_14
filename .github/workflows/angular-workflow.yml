@@ -72,7 +72,7 @@ jobs:
       name: Rollback
       runs-on: ubuntu-latest
       needs: check-file
-      if: needs.check-file.result == 'failure'
+      if: failure()
 
       steps:
         - name: Message
