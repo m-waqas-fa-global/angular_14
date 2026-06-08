@@ -1,4 +1,4 @@
-name: Angular Frontend CI/CD Workflow
+name: Angular CI/CD Workflow
 
 on:
   push:
@@ -59,9 +59,6 @@ jobs:
     needs: build
 
     steps:
-      - name: Checkout Code
-        uses: actions/checkout@v4
-
       - name: Message For User
         run: echo "Starting deployment of Angular application..."
 
@@ -70,3 +67,18 @@ jobs:
 
       - name: Deployment Completed
         run: echo "Angular application deployed successfully."
+  # =========== Job 4: RollBack ===========
+  rollback:
+      name: Rollback
+      runs-on: ubuntu-latest
+      needs: check-file
+      if: needs.check-file.result == 'failure'
+
+      steps:
+        - name: Message
+          run: echo "Failed to check files. Initiating rollback process..."
+
+        - name: Rollback Message
+          run: echo "Check Files validation failed. Rollback initiated."
+
+    
