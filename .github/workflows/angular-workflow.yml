@@ -10,7 +10,7 @@ jobs:
   # =========== Job 1: Check Files Conditions for specific file changes ===========
   check-file:
     name: Check Files
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
 
     steps:
       - name: Checkout/Clone Code From Repository
@@ -55,7 +55,7 @@ jobs:
   # =========== Job 3: Deploying Angular Application ===========
   deploy:
     name: Deploy Angular App
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
     needs: build
 
     steps:
