@@ -19,8 +19,7 @@ export class AboutComponent implements OnInit {
     this.broadChannel.onmessage = (message) => {
       console.warn("About Component received message: ", message);
     }
-    const API_KEY = 'sk_live_123456789abcdef';
-    console.log(API_KEY);
+    // const API_KEY = 'sk_live_123456789abcdef';
   }
 
   cities = [
