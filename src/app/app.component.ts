@@ -8,7 +8,7 @@ import { Route, Router } from '@angular/router';
 })
 export class AppComponent {
   title = 'new-app';
-  
+  API_KEY = "56789abcdef@waqasali"
   onActivate(component: any) {
    console.log('Activated component:', component);
   }
