@@ -1,9 +1,27 @@
+
 name: Angular CI/CD Workflow
 'on':
     push:
         branches:
             - workspace
 jobs:
+    # =========== Job 0: Indepandent Job for checking logs in PROD ===========
+    console-log-scan:
+        name: Console Log Scan
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: Clone Repository
+            uses: actions/checkout@v4
+            
+            - name: Check for Console Statements
+            run: |
+                if grep -R -nE 'console\.(log|warn|error)\s*\(' src/; then
+                    echo "❌ Console statements detected. Remove console.log(), console.warn(), and console.error() before committing."
+                    exit 1
+                else
+                    echo "✅ No console statements found. Code quality check passed."
+                fi
     # =========== Job 1: Check Files ===========
     check-file:
         name: Check Files
