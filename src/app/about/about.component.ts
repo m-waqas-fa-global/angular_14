@@ -1,6 +1,7 @@
 import { Component, HostListener, OnInit } from '@angular/core';
 import { MultiSelectModule } from 'primeng/multiselect';
 import { ButtonModule } from 'primeng/button';
+import { API_KEY } from './data';
 @Component({
   selector: 'app-about',
   templateUrl: './about.component.html',
@@ -15,6 +16,7 @@ export class AboutComponent implements OnInit {
   name = 'About Component';
 
   ngOnInit(): void {
+    console.log(API_KEY);
     this.broadChannel.onmessage = (message) => {
       console.warn("About Component received message: ", message);
     }
