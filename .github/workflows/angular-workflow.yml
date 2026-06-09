@@ -6,7 +6,6 @@ on:
       - workspace
 
 jobs:
-
   # =========== Job 1: Check Files Conditions for specific file changes ===========
   check-file:
     name: Check Files
