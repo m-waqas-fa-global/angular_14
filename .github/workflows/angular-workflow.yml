@@ -1,102 +1,100 @@
 name: Angular CI/CD Workflow
-
-on:
-  push:
-    branches:
-      - workspace
-
+'on':
+    push:
+        branches:
+            - workspace
 jobs:
-  # =========== Job 1: Check Files Conditions for specific file changes ===========
-  check-file:
-    name: Check Files
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout/Clone Code From Repository
-        uses: actions/checkout@v4
-
-      - name: Verify Component Selector
-        run: |
-          if grep -q "selector: 'app-card'" src/app/shared/component/card/card.component.ts; then
-            echo "🟩🟩🟩 Selector found in card.component.ts"
-          else
-            echo "Selector name missing and incorrect 🞫🞫🞫"
-            exit 1
-          fi
-  # =========== Job 2: trufflehog-secret scan prevent accidentally commit secret ===========
-  trufflehog-secret-scan:
-    name: TruffleHog Secret Scan
-    runs-on: ubuntu-latest
-    needs: check-file
-
-    steps:
-      - name: Download Repository
-        uses: actions/checkout@v4
-
-      - name: Check for Hardcoded API Keys
-        run: |
-          if grep -R -nE '(API_KEY|googleApiKey)\s*=' .; then
-            echo "❌ Hardcoded API key detected"
-            exit 1
-          else
-            echo "✅ No hardcoded API keys found"
-          fi
-
-      - name: Run TruffleHog Scan
-        uses: trufflesecurity/trufflehog@main
-        with:
-          path: ./
-  # =========== Job 3: Creating Angular Build ===========
-  build:
-    name: Build Angular App
-    runs-on: ubuntu-latest
-    needs: trufflehog-secret-scan
-
-    steps:
-      - name: Checkout Code
-        uses: actions/checkout@v4
-
-      - name: Message For User
-        run: echo "Code was pushed to workspace branch. Starting Angular build..."
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: 22
-
-      - name: Install Dependencies
-        run: npm ci
-
-      - name: Build Angular Application
-        run: npm run build
-
-      - name: Build Completed
-        run: echo "Angular build completed successfully."
-  # =========== Job 4: Deploying Angular Application ===========
-  deploy:
-    name: Deploy Angular App
-    runs-on: ubuntu-latest
-    needs: build
-
-    steps:
-      - name: Message For User
-        run: echo "Starting deployment of Angular application..."
-
-      # Add deployment steps here
-      # Example: rsync, scp, Azure, AWS, Nginx server, etc.
-
-      - name: Deployment Completed
-        run: echo "Angular application deployed successfully."
-  # =========== Job 5: RollBack If check-file job fails ===========
-  rollback:
-      name: Rollback
-      runs-on: ubuntu-latest
-      needs: check-file
-      if: failure()
-
-      steps:
-        - name: Message
-          run: echo "Failed to check files. Initiating rollback process..."
-
-        - name: Rollback Message
-          run: echo "Check Files validation failed. Rollback initiated."  
+    # =========== Job 1: Check Files ===========
+    check-file:
+        name: Check Files
+        runs-on: ubuntu-latest
+        steps:
+            -
+                name: Checkout/Clone Code From Repository
+                uses: actions/checkout@v4
+            -
+                name: Verify Component Selector
+                run: >
+                    if grep -q "selector: 'app-card'"
+                    src/app/shared/component/card/card.component.ts; then
+                      echo "🟩🟩🟩 Selector found in card.component.ts"
+                    else
+                      echo "Selector name missing and incorrect 🞫🞫🞫"
+                      exit 1
+                    fi
+    # =========== Job 2: TruffleHog Secret Scan ===========
+    trufflehog-secret-scan:
+        name: TruffleHog Secret Scan
+        runs-on: ubuntu-latest
+        needs: check-file
+        steps:
+            -
+                name: Download Repository
+                uses: actions/checkout@v4
+            -
+                name: Check for Hardcoded API Keys
+                run: |
+                    if grep -R -nE '(API_KEY|googleApiKey)\s*=' .; then
+                      echo "❌ Hardcoded API key detected"
+                      exit 1
+                    else
+                      echo "✅ No hardcoded API keys found"
+                    fi
+            -
+                name: Run TruffleHog Scan
+                uses: trufflesecurity/trufflehog@main
+                with:
+                    path: ./
+    # =========== Job 3: Build Angular App ===========
+    build:
+        name: Build Angular App
+        runs-on: ubuntu-latest
+        needs: trufflehog-secret-scan
+        steps:
+            -
+                name: Checkout Code
+                uses: actions/checkout@v4
+            -
+                name: Message For User
+                run: >-
+                    echo "Code was pushed to workspace branch. Starting Angular
+                    build..."
+            -
+                name: Setup Node.js
+                uses: actions/setup-node@v4
+                with:
+                    node-version: 22
+            -
+                name: Install Dependencies
+                run: npm ci
+            -
+                name: Build Angular Application
+                run: npm run build
+            -
+                name: Build Completed
+                run: echo "Angular build completed successfully."
+    # =========== Job 4: Deploy ===========
+    deploy:
+        name: Deploy Angular App
+        runs-on: ubuntu-latest
+        needs: build
+        steps:
+            -
+                name: Message For User
+                run: echo "Starting deployment of Angular application..."
+            -
+                name: Deployment Completed
+                run: echo "Angular application deployed successfully."
+    # =========== Job 5: Rollback ===========
+    rollback:
+        name: Rollback
+        runs-on: ubuntu-latest
+        needs: check-file
+        if: failure()
+        steps:
+            -
+                name: Message
+                run: echo "Failed to check files. Initiating rollback process..."
+            -
+                name: Rollback Message
+                run: echo "Check Files validation failed. Rollback initiated."
