@@ -24,8 +24,22 @@ jobs:
             echo "Selector name missing and incorrect 🞫🞫🞫"
             exit 1
           fi
+  # =========== Job 2: trufflehog-secret scan prevent accidentally commit secret ===========
+  trufflehog-secret-scan:
+    name: TruffleHog Secret Scan
+    runs-on: ubuntu-latest
 
-  # =========== Job 2: Creating Angular Build ===========
+    steps:
+      - name: Download Repository
+        uses: actions/checkout@v4
+
+      - name: Run TruffleHog Scan
+        uses: trufflesecurity/trufflehog@main
+        with:
+          path: ./
+          base: HEAD~1
+          head: HEAD
+  # =========== Job 3: Creating Angular Build ===========
   build:
     name: Build Angular App
     runs-on: ubuntu-latest
@@ -51,8 +65,7 @@ jobs:
 
       - name: Build Completed
         run: echo "Angular build completed successfully."
-
-  # =========== Job 3: Deploying Angular Application ===========
+  # =========== Job 4: Deploying Angular Application ===========
   deploy:
     name: Deploy Angular App
     runs-on: ubuntu-latest
@@ -67,7 +80,7 @@ jobs:
 
       - name: Deployment Completed
         run: echo "Angular application deployed successfully."
-  # =========== Job 4: RollBack ===========
+  # =========== Job 5: RollBack If check-file job fails ===========
   rollback:
       name: Rollback
       runs-on: ubuntu-latest
