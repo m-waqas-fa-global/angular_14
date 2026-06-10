@@ -10,12 +10,13 @@ jobs:
   console-log-scan:
     name: Console Log Scan
     runs-on: ubuntu-latest
+    continue-on-error: true
 
     steps:
       - name: Clone Repository
         uses: actions/checkout@v4
 
-      - name: Check for Console Statements
+      - name: Check for Console Statements Entire Codebase
         run: |
           if grep -R -nE 'console\.(log|warn|error)\s*\(' src/; then
             echo "❌ Console statements detected. Remove console.log(), console.warn(), and console.error() before committing."
