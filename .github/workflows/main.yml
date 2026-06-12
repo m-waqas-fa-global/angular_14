@@ -16,3 +16,11 @@ jobs:
         run: |
           ls ${{ github.workspace }}
       - run: echo "🍏 This job's status is ${{ job.status }}."
+
+  check-file:
+     runs-on: ubuntu-latest
+     steps: 
+        - name: Cloning repository
+          uses: actions/checkout@v4
+        - name: Display User Message
+          run: echo "Repo Cloned Successfully and Install Deps"
