@@ -1,5 +1,4 @@
-name: GitHub Actions CI/CD
-run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
+name: GitHub Actions on MAIN Branch CI/CD
 on: [push]
 jobs:
   Explore-GitHub-Actions:
@@ -17,6 +16,7 @@ jobs:
           ls ${{ github.workspace }}
       - run: echo "🍏 This job's status is ${{ job.status }}."
 
+jobs:
   check-file:
      runs-on: ubuntu-latest
      steps: 
