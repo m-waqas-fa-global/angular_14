@@ -1,7 +1,10 @@
 name: GitHub Actions on MAIN Branch CI/CD
+
 on: [push]
+
 jobs:
-  Explore-GitHub-Actions:
+  details:
+    name: Explore GitHub Actions
     runs-on: ubuntu-latest
     steps:
       - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
@@ -16,11 +19,11 @@ jobs:
           ls ${{ github.workspace }}
       - run: echo "🍏 This job's status is ${{ job.status }}."
 
-jobs:
   check-file:
-     runs-on: ubuntu-latest
-     steps: 
-        - name: Cloning repository
-          uses: actions/checkout@v4
-        - name: Display User Message
-          run: echo "Repo Cloned Successfully and Install Deps"
+    name: User Message
+    runs-on: ubuntu-latest
+    steps: 
+      - name: Cloning repository
+        uses: actions/checkout@v6
+      - name: Display User Message
+        run: echo "Repo Cloned Successfully and Install Deps"
