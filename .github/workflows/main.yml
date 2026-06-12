@@ -22,6 +22,7 @@ jobs:
   check-file:
     name: User Message
     runs-on: ubuntu-latest
+    needs: details
     steps: 
       - name: Cloning repository
         uses: actions/checkout@v6
