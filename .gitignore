@@ -42,3 +42,4 @@ testem.log
 Thumbs.db
 
 # Auto Script Files: like .sh files
+auto-git.sh
