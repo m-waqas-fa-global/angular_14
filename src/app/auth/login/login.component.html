@@ -1,0 +1,41 @@
+<!-- <div class="login-container">
+  <div class="login-card">
+    <h2>Login</h2>
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="login-form">
+      <div class="form-group">
+        <label for="username">Username:</label>
+        <input 
+          type="text" 
+          id="username" 
+          formControlName="username"
+          required 
+          class="form-control"
+          placeholder="Enter your username"
+        >
+      </div>
+      
+      <div class="form-group">
+        <label for="password">Password:</label>
+        <input 
+          type="password" 
+          id="password" 
+          formControlName="password"
+          required 
+          class="form-control"
+          placeholder="Enter your password"
+        >
+      </div>
+      
+      <button type="submit" class="login-btn">Login</button>
+    </form>
+  </div>
+</div> -->
+
+<h2 class="green">This is title | Home Page</h2>
+<button (click)="routeTo()">Go To</button>
+
+<app-card>
+  <h2 header>This Content is Project form Parent to Child</h2>
+  <p body>This is some additional content inside the card component.</p>
+  <p body>Details of Product</p>
+</app-card>

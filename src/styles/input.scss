@@ -1,0 +1,12 @@
+
+// ===============================
+  // Input validation styles for Required fields
+// ===============================
+
+mat-form-field.ng-invalid.ng-untouched .mat-form-field-flex {
+  border: 1px solid red;
+}
+
+mat-form-field.ng-invalid.ng-touched .mat-form-field-flex {
+  border: 1px solid red;
+}
