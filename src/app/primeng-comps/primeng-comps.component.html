@@ -1,0 +1,87 @@
+
+ <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="/">AcmeCMS</a>
+      <nav class="main-nav" aria-label="Primary">
+        <a href="/">Home</a>
+        <a href="about.html">About</a>
+        <a href="#features">Features</a>
+        <a class="cta" href="#get-started">Get Started</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero container">
+      <div class="hero-copy">
+        <h1>Home AcmeCMS</h1>
+        <p class="lead">A modern, lightweight CMS starter — clean editing UI, flexible content models, and fast performance.</p>
+        <p class="hero-actions">
+          <a class="btn primary" href="#get-started">Start free trial</a>
+          <a class="btn ghost" href="about.html">Learn more</a>
+        </p>
+      </div>
+      <div class="hero-visual" aria-hidden="true">
+        <div class="card small">Article editor</div>
+        <div class="card small">Media library</div>
+        <div class="card small">Roles & Permissions</div>
+      </div>
+    </section>
+
+    <section id="features" class="container features">
+      <h2>Core features</h2>
+      <div class="grid cols-3">
+        <article class="feature">
+          <h3>Rich editor</h3>
+          <p>WYSIWYG editing with structured blocks and reusable components.</p>
+        </article>
+        <article class="feature">
+          <h3>Media management</h3>
+          <p>Upload, tag, and reuse images and files across pages and posts.</p>
+        </article>
+        <article class="feature">
+          <h3>Permissions</h3>
+          <p>Granular user roles for teams and clients.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="get-started" class="container get-started">
+      <h2>Ready to publish?</h2>
+      <p>Sign up, create your first page, and go live in minutes.</p>
+      <a class="btn primary" href="#">Create account</a>
+    </section>
+
+    <section class="container recent-posts">
+      <h2>Recent content</h2>
+      <ul class="posts-list">
+        <li class="post">How we built our editor — <span class="muted">Aug 12, 2025</span></li>
+        <li class="post">5 tips for content modeling — <span class="muted">Jul 29, 2025</span></li>
+        <li class="post">Scaling static sites with CMS — <span class="muted">Jun 10, 2025</span></li>
+      </ul>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div>© <span id="year">2025</span> AcmeCMS</div>
+      <nav class="footer-nav" aria-label="Footer">
+        <a href="about.html">About</a>
+        <a href="#">Privacy</a>
+        <a href="#">Docs</a>
+      </nav>
+    </div>
+  </footer> 
+ 
+   <h4 *ngIf="value.length > 0">You entered: {{value}}</h4>
+ 
+ <button (click)="routeBack()">Route Back</button>
+ <button (click)="routeTo()">Route It Self</button>
+
+<p-button label="Submit"></p-button>
+  <br>
+<input type="text" pInputText [(ngModel)]="value" placeholder="Enter Text" (blur)="sendMsg()"/>
+
+
+
+
